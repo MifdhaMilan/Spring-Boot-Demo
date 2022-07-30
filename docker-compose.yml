@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mysqldb:
+    image: 'mysql:8'
+    environment:
+      - MYSQL_ROOT_PASSWORD=Mifdha123
+      - MYSQL_DATABASE=sun_travels
+    ports:
+      - "3307:3306"
+  spring-boot-mysql-demo-container:
+    image: spring-boot-mysql-demo-container
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/sun_travels
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "Mifdha123"
+      SPRING_JPA_HIBERNATE_DDL-AUTO: "update"
+    build:
+      context: "./"
+      dockerfile: "DockerFile"
+    depends_on:
+      - mysqldb
+
+
+

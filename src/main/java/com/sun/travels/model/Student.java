@@ -1,5 +1,6 @@
 package com.sun.travels.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class Student {
     private Department department;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
+    @JsonIgnore
     private Set<CourseEnrollment> courseEnrollments;
 
 

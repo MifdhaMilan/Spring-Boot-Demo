@@ -20,6 +20,7 @@ public class Course {
     private String name;
     private String duration;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    @JsonIgnore
     private Set<CourseEnrollment> courseEnrollments;
 
 }
